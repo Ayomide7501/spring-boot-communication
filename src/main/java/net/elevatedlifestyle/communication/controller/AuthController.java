@@ -42,6 +42,12 @@ public class AuthController {
             case "staff":
                 dbRole = "ROLE_STAFF";
                 break;
+            case "organizer":
+                dbRole = "ROLE_STAFF";
+                break;
+            case "cleaner":
+                dbRole = "ROLE_STAFF";
+                break;
             case "":
                 dbRole = "ROLE_USER";
                 break;

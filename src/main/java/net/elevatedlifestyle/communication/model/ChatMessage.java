@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 
 import java.time.LocalDateTime;
 
@@ -25,7 +27,8 @@ public class ChatMessage {
     private String messageType;
     private String content;
     private String time;
-
+    @CreationTimestamp
+    private LocalDateTime date;
     @ManyToOne(fetch = FetchType.LAZY, targetEntity = ChatRoom.class)
     @JoinColumn(name = "chatroom_id")
     @JsonIgnore

@@ -1,20 +1,19 @@
 package net.elevatedlifestyle.communication.controller;
 
-import jakarta.servlet.http.HttpServletRequest;
+import jakarta.annotation.Nullable;
 import net.elevatedlifestyle.communication.dto.ChatRoomDto;
 import net.elevatedlifestyle.communication.model.ChatMessage;
 import net.elevatedlifestyle.communication.model.ChatRoom;
-import net.elevatedlifestyle.communication.model.MessageType;
 import net.elevatedlifestyle.communication.model.User;
 import net.elevatedlifestyle.communication.repository.ChatRoomRepository;
 import net.elevatedlifestyle.communication.repository.UserRepository;
+import net.elevatedlifestyle.communication.service.AwsS3Service;
 import net.elevatedlifestyle.communication.service.ChatMessageService;
 import net.elevatedlifestyle.communication.service.ChatRoomService;
-import net.elevatedlifestyle.communication.service.UserService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -23,6 +22,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -32,17 +32,18 @@ public class ChatController {
     private ChatRoomRepository chatRoomRepository;
     private ChatRoomService chatRoomService;
     private SimpMessagingTemplate simpMessagingTemplate;
-    private UserService userService;
     private UserRepository userRepository;
     private ChatMessageService chatMessageService;
+    private AwsS3Service awsS3Service;
 
-    public ChatController(ChatRoomRepository chatRoomRepository, ChatRoomService chatRoomService, SimpMessagingTemplate simpMessagingTemplate, UserService userService, UserRepository userRepository, ChatMessageService chatMessageService) {
+
+    public ChatController(ChatRoomRepository chatRoomRepository, ChatRoomService chatRoomService, SimpMessagingTemplate simpMessagingTemplate, UserRepository userRepository, ChatMessageService chatMessageService, AwsS3Service awsS3Service) {
         this.chatRoomRepository = chatRoomRepository;
         this.chatRoomService = chatRoomService;
         this.simpMessagingTemplate = simpMessagingTemplate;
-        this.userService = userService;
         this.userRepository = userRepository;
         this.chatMessageService = chatMessageService;
+        this.awsS3Service = awsS3Service;
     }
 
     @PostMapping("/createroom")
@@ -83,14 +84,15 @@ public class ChatController {
                             @RequestParam("roomId") String roomId,
                             @RequestParam("type") String type,
                             @RequestParam("content") String content,
-                            @RequestParam("id") String id){
+                            @RequestParam("id") String id,
+                            @RequestParam("file") @Nullable MultipartFile file) throws IOException {
         LocalTime currentTime = LocalTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         String formattedTime = currentTime.format(formatter);
 
         ChatMessage chatMessage = new ChatMessage();
         chatMessage.setSenderId(Long.valueOf(id));
-        chatMessage.setContent(content);
+
         chatMessage.setTime(formattedTime);
         switch (type) {
             case "text" -> chatMessage.setMessageType("text");
@@ -101,7 +103,15 @@ public class ChatController {
             default -> {
             }
         }
-        //simpMessagingTemplate.convertAndSend("/topic/" + roomId, chatMessage);
+        if (type.equals("image")){
+            assert file != null;
+            String downLoadUri = awsS3Service.upload("image-messages/", file);
+            System.out.println("Download url: " + downLoadUri);
+            chatMessage.setContent(downLoadUri);
+
+        }else {
+            chatMessage.setContent(content);
+        }
         ChatRoom chatRoom = chatRoomRepository.findById(Long.valueOf(roomId)).orElseThrow(() -> new RuntimeException("chat room not found"));
         chatMessage.setChatRoom(chatRoom);
         chatRoom.getMessages().add(chatMessage);

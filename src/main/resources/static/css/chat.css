@@ -6,8 +6,8 @@
     background-position: center;
 }
 .toolbar{
-    height: 10vh;
-    width: 100vw;
+    height: 10%;
+    width: 100%;
     position: fixed;
     background-color: #fff;
 }
@@ -16,7 +16,7 @@
     position: fixed;
     flex-direction: row;
     align-items: center;
-    height: 10vh;
+    height: 10%;
     width: 100%;
 }
 #names{
@@ -49,7 +49,7 @@
 .chat{
     width: 100%;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 10%;
     margin-bottom: 18%;
     background-image: url();
     background-repeat: no-repeat;
@@ -86,7 +86,6 @@
 .body, .sender{
     margin-bottom: 0;
 }
-
 .bottom-nav{
     display: flex;
     flex-direction: column;
@@ -95,19 +94,17 @@
     width: 100%;
 }
 .bottom-nav nav{
-    display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100%;
     text-align: center;
-    background-color: #fff;
+    background-color: #f8f8f8;
     padding-top: 5px;
+    flex-wrap: wrap;
 }
-
 nav #bottom-chat{
     display: flex;
     width: 100%;
-    background-color: #fff;
+    background-color: #f8f8f8;
     justify-content: center;
     align-items: center;
 }
@@ -126,6 +123,7 @@ nav #emoji{
     right: 28%;
     z-index: 1;
 }
+
 #plus-div, #cam-div{
     position: relative;
     width: 24px;
@@ -158,7 +156,13 @@ nav #emoji{
     right: 12%;
 }
 .bottom-nav .chef-nav{
-    display: none;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+}
+.chef-nav p{
+    margin: 0;
+
 }
 .item-sender h5, .item-sender p{
     color: #fff;
@@ -190,15 +194,68 @@ nav #emoji{
     padding-top: 10px;
     margin: 0;
 }
-.chat-group{
+.help-toggle,
+.services-toggle{
+    display: none;
+    background: #f8f8f8;
+    position: fixed;
+    bottom: 55px;
+    text-align: center;
+    width: 100%;
+    justify-content: space-around;
+}
+.help-toggle article img, .services-toggle article img{
+    width: 25px;
+    height: 25px;
+}
+.help-toggle article h5, .services-toggle article h5{
+    margin: 0;
+    text-decoration: none;
+    font-weight: normal;
+}
+.call-modal{
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    bottom: 60px;
+    padding: 10px;
+    width: 100%;
+    align-items: end;
+    justify-content: center;
+    background: #f8f8f8;
+}
+.call-modal article img{
+    width: 34px;
+    height: 34px;
+    border-radius: 100px;
+}
+.call-modal h3, .call-modal h4{
+    width: fit-content;
+    font: inherit;
+    font-weight: bold;
+    font-size: .8rem;
+    text-align: center;
+    margin-left: 10px;
+}
+.call-modal article{
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    margin-left: 15px;
 }
 #remoteVideo, #localVideo{
 position: fixed;
-width: 100vw;
-height: 80vh;
+width: 100%;
+height: 80%;
 z-index: 500;
-top: 20vh;
+top: 20%;
+display: none;
 }
 @media (min-width: 40rem){
-
+    .mobile-chat, .toolbar nav, .bottom-nav{
+        width: 60%;
+    }
+    .mobile-chat{
+        float: right;
+    }
 }

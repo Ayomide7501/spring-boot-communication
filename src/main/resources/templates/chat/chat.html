@@ -47,7 +47,7 @@
 
         <div id="cam-div">
           <img src="/img/cam.svg" id="cam" alt="">
-          <input type="file" accept="image/*">
+          <input type="file" accept="image/*" id="image-input">
         </div>
 
         <img src="/img/record.svg" id="record" alt="">
@@ -86,11 +86,7 @@
 <script src="/js/chat/calls.js"></script>
 
 <script>
-  var currentUserId = document.querySelector('#currentUser').value;
-  var camBtn = document.querySelector('#cam-div input');
-  camBtn.addEventListener('change', function(){
-  alert("Clicked");
-  });
+
 </script>
 </body>
 </html>

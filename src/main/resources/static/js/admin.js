@@ -148,7 +148,7 @@ createRoomSubmit.addEventListener("click", function () {
     $.ajax({
       type: "POST",
       url: "/createroom",
-      data: { name: roomNameInput.value, desc: roomDescInput.value },
+      data: {name: roomNameInput.value, desc: roomDescInput.value },
       success: function () {
         alert("Data created");
       },

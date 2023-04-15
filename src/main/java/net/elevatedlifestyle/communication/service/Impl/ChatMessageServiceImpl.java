@@ -22,7 +22,7 @@ public class ChatMessageServiceImpl implements ChatMessageService {
     @Override
     public List<ChatMessage> getChatMessagesForChatRoom(Long roomId) {
         ChatRoom chatRoom = chatRoomRepository.findById(roomId).orElseThrow();
-        List<ChatMessage> messages = chatMessageRepository.findByChatRoomOrderByTimeAsc(chatRoom);
+        List<ChatMessage> messages = chatMessageRepository.findByChatRoomOrderByDateAsc(chatRoom);
         return  messages;
     }
 }
