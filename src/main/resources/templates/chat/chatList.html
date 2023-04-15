@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/chatList.css">
+    <title>Mobile Chat</title>
+</head>
+<body>
+<div class="mobile-chat">
+    <div class="chat-nav">
+        <nav>
+            <h1>Elevated Lifestyle</h1>
+            <div class="nav-icon">
+                <i><img src="/img/search.svg" alt=""></i>
+                <i class="bi bi-three-dots-vertical"></i>
+            </div>
+        </nav>
+    </div>
+    <span></span>
+
+    <div class="overflow">
+        <div class="chat" th:each="room: ${rooms}" th:id="${room.id}">
+            <img src="/img/blank-profile-picture.png" alt="profile-image">
+            <article class="chat-view">
+                <h3 th:text="${room.name}"></h3>
+                <p th:text="${room.desc}"></p>
+            </article>
+            <article class="time-view">
+                <small>10:55</small>
+                <small id="badge">1</small>
+            </article>
+        </div>
+</div>
+<div class="side">
+    <aside class="toolbar">
+        <nav>
+            <img src="/img/back.svg" id="back" alt="">
+            <img src="/img/blank-profile-picture.png" class="profile-img" alt="">
+            <article id="names">
+                <h3>Chef</h3>
+                <p>Chef,Marie,You</p>
+            </article>
+            <img class="call" src="/img/Call.svg" alt="">
+            <img class="video" src="/img/video.svg" alt="">
+            <img class="option" src="/img/option.svg" alt="">
+        </nav>
+    </aside>
+</div>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/socket.min.js"></script>
+<script src="/js/stomp.min.js"></script>
+<script src="/js/chatlist.js"></script>
+</body>
+</html>

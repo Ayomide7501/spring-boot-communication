@@ -1,0 +1,147 @@
+.side{
+  display: none;
+}
+.mobile-chat{
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-nav{
+  position: fixed;
+  top: 0;
+  width: 100vh;
+  height: 10vh;
+  max-height: 65px;
+  background: #F8F8F8;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+nav{
+  flex-direction: row;
+  padding: 10px 10px 0 15px;
+  margin-top: 10px;
+}
+
+.chat-nav h1{
+  font: inherit;
+  font-weight: 700;
+  color: #3274E1;
+  float: left;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.nav-icon{
+  float: right;
+  margin-right: 15px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #3274E1;
+}
+
+.nav-icon img{
+  height: 20px;
+  width: 20px;
+}
+
+.chat{
+  margin-top: 10px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.chat img{
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  margin-left: 5px;
+}
+
+span{
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 50px;
+
+}
+
+.chat-view,
+.time-view{
+  flex-direction: column;
+  margin-left: 5px;
+}
+.chat-view{
+  width:70%;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+}
+.chat h3{
+  width: 70%;
+  margin-bottom: 0;
+  font-family: "Poppins";
+  font-weight: bold;
+  font-size: 0.7rem;
+}
+
+.chat-view p{
+  font-family: "Poppins";
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 400;
+  margin-top: 0;
+
+}
+
+.time-view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-view small{
+  font-size: 0.6rem;
+}
+
+.badge{
+  color: #fff;
+  text-align: center;
+  background-color: #3274E1;
+  border-radius: 100px;
+  height: 15px;
+  width: 15px;
+  margin-top: 5px;
+}
+
+
+@media (min-width: 40rem){
+  .mobile-chat, .chat-nav{
+    width: 40%;
+  }
+  .side{
+    display: none;
+    width: 50%;
+    position: relative;
+  }
+  .toolbar{
+    height: 10vh;
+    width: 50%;
+    position: fixed;
+    background-color: #fff;
+}
+.toolbar nav{
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    align-items: center;
+    height: 10vh;
+    width: 100%;
+}
+  .toolbar .profile-img{
+    width: 36px;
+    height: 36px;
+    border-radius: 100px;
+}
+}

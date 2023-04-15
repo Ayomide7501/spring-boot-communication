@@ -1,0 +1,483 @@
+.mobile-chat {
+  display: flex;
+  flex-direction: column;
+  height: 9vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+}
+
+.width,
+.chat-nav,
+.tabContainer {
+  width: 100%;
+}
+
+.chat-nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}
+
+.desktop-nav {
+  display: none;
+}
+
+nav {
+  flex-direction: row;
+  padding: 10px 10px 0 15px;
+  margin-top: 10px;
+}
+
+.chat-nav h1 {
+  font: inherit;
+  font-weight: 700;
+  color: #3274E1;
+  float: left;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.nav-icon {
+  float: right;
+  margin-right: 15px;
+  font-size: 20px;
+  font-weight: bolder;
+  color: #3274E1;
+}
+
+#toggle_hamburger:hover {
+  cursor: pointer;
+  ;
+}
+
+.nav-icon img {
+  height: 20px;
+  width: 20px;
+}
+
+.user {
+  overflow: hidden scroll;
+}
+
+.user-item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;
+  align-items: center;
+
+}
+
+.bi {
+  float: right;
+}
+
+.user-image {
+  width: 30px;
+  border-radius: 100px;
+  margin-left: 10px;
+}
+
+.user-item h3 {
+  font: inherit;
+  font-size: 0.8rem;
+  width: 60%;
+  margin-left: 5%;
+  font-weight: bold;
+  color: #000;
+}
+
+.user-item i {
+  margin-left: 10px;
+}
+
+.tabContainer {
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+}
+
+.tabContainer .buttonContainer {
+  height: 50px;
+}
+
+.tabContainer .buttonContainer button {
+  width: 50%;
+  height: 100%;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px;
+  font-family: sans-serif;
+  font-size: 18px;
+  background-color: #eee;
+}
+
+.tabContainer .buttonContainer button:hover {
+  background-color: #d7d4d4;
+}
+
+.tabContainer .tabPanel {
+  height: 85%;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  font-size: 22px;
+  display: none;
+}
+
+.tab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Styles for the button */
+.toggle-button {
+  position: relative;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 24px;
+  margin-right: 8%;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked+.slider {
+  background-color: #2196F3;
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#add-new {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 8px 25px;
+  border-radius: 10px;
+  background: #3274E1;
+  color: #fff;
+  border: none;
+  margin: 10px 20px;
+  font-size: .7rem;
+  z-index: 2;
+}
+
+.user {
+  margin-top: 20px;
+}
+
+.back-drop {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal {
+  display: none;
+  height: fit-content;
+  width: fit-content;
+}
+
+.modal p {
+  margin-bottom: 0;
+}
+
+.modal form {
+  position: fixed;
+  z-index: 200;
+  top: 25%;
+  left: 20%;
+  background: #D9D9D9;
+  ;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  width: 60%;
+  border-radius: 10px;
+}
+
+.modal form .role {
+  display: none;
+}
+
+.modal form .name input,
+.modal form .type select,
+.modal form .role select,
+.modal form .email input {
+  border: none;
+  border-radius: 10px;
+  height: 35px;
+  padding-left: 10px;
+  margin-top: 5px;
+  color: #000;
+  font-size: 0.8rem;
+}
+
+.modal form .name,
+.modal form .type,
+.modal form .role,
+.modal form .email {
+  margin-top: 15px;
+}
+
+form input,
+form select {
+  width: 100%;
+}
+
+form #addNewSubmit {
+  width: fit-content;
+  margin-top: 20px;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  background: #3274E1;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.8rem;
+  width: 110px;
+}
+
+.side-bar {
+  display: none;
+  position: fixed;
+  z-index: 250;
+  width: 40%;
+  background: #F8F8F8;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+}
+
+.side-bar aside {
+  margin-bottom: 50px;
+  border-bottom: 2px solid #D9D9D9;
+}
+
+.side-bar aside,
+.side-bar article {
+  margin-left: 20px;
+}
+
+.side-bar aside img {
+  width: 87px;
+  height: 87px;
+  border-radius: 100px;
+  margin: 10px 0 10px 10px;
+}
+
+.side-bar aside h3 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 0 10px 10px;
+}
+
+.side-bar article {
+  display: flex;
+  margin-top: 15px;
+}
+
+.side-bar article img {
+  width: 15px;
+  height: 15px;
+  margin-right: 10px;
+}
+
+.side-bar article p {
+  font-size: .7rem;
+  color: #000;
+  font-weight: bold;
+}
+
+#logout,
+#newRoom,
+#settings {
+  cursor: pointer;
+}
+
+.create-room {
+  display: flex;
+  display: none;
+  flex-direction: column;
+  background: #D9D9D9;
+  box-shadow: 0px 4.625px 4.625px rgba(0, 0, 0, 0.25);
+  border-radius: 11.5625px;
+  width: 70%;
+  padding: 20px;
+  position: fixed;
+  height: fit-content;
+  top: 10%;
+  left: 10%;
+  z-index: 300;
+  justify-content: center;
+}
+
+.create-room p {
+  margin-bottom: 8px;
+  color: #000;
+  font-weight: bold;
+  font-size: .8rem;
+}
+
+.create-room article {
+  margin-bottom: 30px;
+}
+
+.create-room input,
+.create-room select {
+  width: 90%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #D9D9D9;
+  background: #fff;
+}
+
+.create-room #room-desc {
+  height: 150px;
+}
+
+.create-room input::placeholder {
+  font-size: .7rem;
+  padding-left: 15px;
+}
+
+.create-room button {
+  width: fit-content;
+  align-self: center;
+  background-color: #3274E1;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-size: .7rem;
+  color: #fff;
+}
+
+@media (min-width: 40rem) {
+
+  .width,
+  .chat-nav,
+  .tabContainer {
+    width: 40vw;
+  }
+
+  .mobile-chat {
+    display: none;
+  }
+
+  .cover {
+    width: 60vw;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-image: url("/img/elevatedw.jpg");
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: auto;
+    background-position: center;
+  }
+
+  .desktop-nav {
+    display: flex;
+    flex-direction: column;
+    height: 10vh;
+    width: 40vw;
+  }
+
+  .desktop-nav-item>img {
+    margin-left: 20px;
+  }
+
+  .desktop-nav-item {
+    top: 0;
+    background: #F8F8F8;
+    z-index: 1;
+    margin-top: 20px;
+  }
+
+  .desktop-nav-item #search-input {
+    position: relative;
+    border-radius: 100px;
+    width: 80%;
+    height: 42px;
+    padding-left: 20px;
+  }
+
+  .modal form {
+    width: 30%;
+    left: 5%;
+  }
+
+  .side-bar {
+    width: 30%;
+    max-width: 300px;
+  }
+
+  .create-room {
+    width: 40%;
+    max-width: 400px;
+    top: 5%;
+  }
+}

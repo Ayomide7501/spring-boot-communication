@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/shared.css">
+  <link rel="stylesheet" href="/css/chat.css">
+</head>
+<body>
+<div class="mobile-chat">
+  <video id="localVideo" autoplay></video>
+  <video id="remoteVideo" autoplay></video>
+  <div class="toolbar">
+    <nav>
+      <img src="/img/back.svg" id="back" alt="">
+      <img src="/img/blank-profile-picture.png" class="profile-img" alt="">
+      <article id="names">
+        <h3>Chef</h3>
+        <p>Chef,Marie,You</p>
+      </article>
+      <img class="call" src="/img/Call.svg" alt="">
+      <img class="video" src="/img/video.svg" alt="">
+      <img class="option" src="/img/option.svg" alt="">
+    </nav>
+  </div>
+
+  <div class="chat">
+    <input type="text" style="display:none;" id="currentUser" th:value="${userid}">
+    <div class="background-cover"></div>
+    <div class="chat-group">
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <nav>
+      <div id="bottom-chat">
+        <div id="plus-div">
+          <img src="/img/plus.svg" id="plus" alt="">
+          <input type="file" accept="file/*">
+        </div>
+
+        <input type="text" id="message-input">
+
+        <img src="/img/emoji.svg" id="emoji" alt="">
+
+        <div id="cam-div">
+          <img src="/img/cam.svg" id="cam" alt="">
+          <input type="file" accept="image/*">
+        </div>
+
+        <img src="/img/record.svg" id="record" alt="">
+      </div>
+    </nav>
+
+    <nav class="chef-nav">
+      <div>
+        <img src="/img/services.svg" alt="">
+        <p>Services</p>
+      </div>
+      <div>
+        <img src="/img/help.svg" alt="">
+        <p>Help</p>
+      </div>
+      <div>
+        <img src="/img/chat.svg" alt="">
+        <p>Chat</p>
+      </div>
+      <div>
+        <img src="/img/Call.svg" alt="">
+        <p>Call</p>
+      </div>
+    </nav>
+  </div>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/stomp.min.js"></script>
+<script src="/js/socket.min.js"></script>
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>-->
+<script src="/js/peer.min.js"></script>
+<script src="/js/chat/chat.js"></script>
+<script src="/js/chat/calls.js"></script>
+
+<script>
+  var currentUserId = document.querySelector('#currentUser').value;
+  var camBtn = document.querySelector('#cam-div input');
+  camBtn.addEventListener('change', function(){
+  alert("Clicked");
+  });
+</script>
+</body>
+</html>
